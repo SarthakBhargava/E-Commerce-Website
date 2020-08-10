@@ -1,0 +1,94 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<form action="category"></form>
+    {% csrf_token %}
+    <input type="text" placeholder="Let's find something..."/>
+    <Button type="submit" value="Search" class="btn btn-primary search-btn">Search</Button>
+</form>
+<br>
+<h1>Categories</h1><br>
+
+<div class="row category-div">
+        <a href="#laptop" class="btn btn-dark" style="width:200;margin-left:10px;">Laptops</a>
+        <a href="#phone" class="btn btn-dark" style="width:200">Phones</a>
+        <a href="#accessories" class="btn btn-dark" style="width:200">Accessories</a>
+        <a href="#software" class="btn btn-dark" style="width:200">Softwares</a>
+        <a href="#other" class="btn btn-dark" style="width:200">Others</a>
+    </div>
+<br>
+
+<hr class="cat-borders"><h2 id="laptop" name="laptop">Laptops</h2><a href="" style="font-size:12; color: #000000">more</a> <hr class="cat-borders">
+    <div class="row product-card-div">
+        {% for product in products %}
+        {% if product.category == 'laptop' %}
+        <div class="card card-pos" style="width: 18rem;">
+            <img src="{{product.image.url}}" class="card-img-top card-img-size" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">₹{{product.price}}</p>
+                <a  href="{% url 'detail' product.id %}" class="btn btn-block btn-outline-primary card-button-category">View</a>
+                <a data-product="{{product.id}}" data-action="add" href="#" class="btn btn-block btn-outline-primary card-button-category update-cart">Add to Cart</a>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+<br>
+<hr class="cat-borders"><h2 id="phone" name="phone">Phones</h2><a href="" style="font-size:12; color: #000000">more</a> <hr class="cat-borders">
+    <div class="row product-card-div">
+        {% for product in products %}
+        {% if product.category == 'phone' %}
+        <div class="card card-pos" style="width: 18rem;">
+            <img src="{{product.image.url}}" class="card-img-top card-img-size" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">₹{{product.price}}</p>
+                <a href="{% url 'detail' product.id %}" class="btn btn-block btn-outline-primary card-button-category">View</a>
+                <a data-product="{{product.id}}" data-action="add" href="#" class="btn btn-block btn-outline-primary card-button-category update-cart">Add to Cart</a>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+<br>
+<hr class="cat-borders"><h2 id="accessories" name="accessories">Accessories</h2><a href="" style="font-size:12; color: #000000">more</a> <hr class="cat-borders">
+    <div class="row product-card-div">
+        {% for product in products %}
+        {% if product.category == 'accessories' %}
+        <div class="card card-pos" style="width: 18rem;">
+            <img src="{{product.image.url}}" class="card-img-top card-img-size" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">₹{{product.price}}</p>
+                <a href="{% url 'detail' product.id %}" class="btn btn-block btn-outline-primary card-button-category">View</a>
+                <a data-product="{{product.id}}" data-action="add" href="#" class="btn btn-block btn-outline-primary card-button-category update-cart">Add to Cart</a>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+<br>
+<hr class="cat-borders"><h2 id="software" name="software">Softwares</h2><a href="" style="font-size:12; color: #000000">more</a> <hr class="cat-borders">
+    <div class="row product-card-div">
+        {% for product in products %}
+        {% if product.category == 'software' %}
+        <div class="card card-pos" style="width: 18rem;">
+            <img src="{{product.image.url}}" class="card-img-top card-img-size" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">₹{{product.price}}</p>
+                <a href="{% url 'detail' product.id %}" class="btn btn-block btn-outline-primary card-button-category">View</a>
+                <a data-product="{{product.id}}" data-action="add" href="#" class="btn btn-block btn-outline-primary card-button-category update-cart">Add to Cart</a>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock content %}

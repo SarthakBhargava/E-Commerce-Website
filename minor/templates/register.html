@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+<div class="register-div">
+    <h2>Register</h2>
+    <hr class="login-section">
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <input type="text" name="first_name" placeholder="First Name" class="register-input">
+
+            <input type="text" name="last_name" placeholder="Last Name" class="register-input">
+
+            <input type="email" name="email" placeholder="Email" class="register-input">
+
+            <input type="text" name="user_name" placeholder="User Name" class="register-input">
+
+            <input type="password" name="password" placeholder="Password" class="register-input">
+
+            <input type="password" name="confirm_password" placeholder="Confirm Password" class="register-input">
+            <Button type="submit" class="btn btn-block btn-outline-primary login-btn"> Register </Button>
+        </form>
+    {% for m in messages %}
+        {{m}}
+    {% endfor %}
+    <hr class="login-section">
+    <br><br>
+
+
+</div>
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<div class="login-div">
+    <h2>Log In</h2>
+    <hr class="login-section">
+        <form action="" method="post">
+            {% csrf_token %}
+            User Name :<br>
+            <input type="text" name="username" placeholder="User name"> <br>
+            Password :<br>
+            <input type="password" name="password" placeholder="Password"> <br>
+            <Button type="submit" class="btn btn-block btn-outline-primary login-btn"> Log In </Button>
+        </form>
+    <a class="forget-section" href="">forget password ?</a>
+    {% for m in messages %}
+        {{m}}
+    {% endfor %}
+    <hr class="login-section">
+
+    <h2>Sign Up</h2>
+    <a href="{% url 'register' %}" class="btn btn-block btn-outline-primary register-btn">Register now</a><br><br>
+
+</div>
+{% endblock content %}
